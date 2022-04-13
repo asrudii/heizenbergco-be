@@ -18,7 +18,8 @@ app.use(express.json());
 })();
 
 // router
-const { authAdminRouters } = require('./routers');
+const { authAdminRouters, cartRouters } = require('./routers');
 app.use('/admin/auth', authAdminRouters);
+app.use('/cart', cartRouters);
 
 app.listen(5000, () => console.log('API running at port 5000'));
