@@ -10,10 +10,15 @@ app.use(express.json());
 (async () => {
   try {
     await sequelize.authenticate();
+    // await sequelize.sync({ force: true });
     console.log('sequelize connection success!');
   } catch (error) {
     console.log(error);
   }
 })();
+
+// router
+const { authAdminRouters } = require('./routers');
+app.use('/admin/auth', authAdminRouters);
 
 app.listen(5000, () => console.log('API running at port 5000'));
